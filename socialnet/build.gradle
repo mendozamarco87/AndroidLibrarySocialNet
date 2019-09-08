@@ -1,0 +1,40 @@
+apply plugin: 'com.android.library'
+apply from: 'publish.gradle'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+buildscript {
+    repositories {
+        google()
+        jcenter()
+
+    }
+    dependencies {
+
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api 'androidx.appcompat:appcompat:1.1.0'
+    api 'com.facebook.android:facebook-android-sdk:4.7.0'
+    api 'com.google.android.gms:play-services-auth:17.0.0'
+}
