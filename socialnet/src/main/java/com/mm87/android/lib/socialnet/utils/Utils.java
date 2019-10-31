@@ -16,7 +16,7 @@ import java.security.MessageDigest;
  */
 public class Utils {
 
-    public static String generateHashCode(Context context, String packagee) {
+    public static String generateKeyHash(Context context, String packagee) {
         try {
             PackageInfo info = context.getPackageManager().getPackageInfo(
                     packagee,PackageManager.GET_SIGNATURES);

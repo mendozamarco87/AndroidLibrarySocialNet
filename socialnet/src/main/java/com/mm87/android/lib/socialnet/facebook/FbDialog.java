@@ -32,6 +32,7 @@ public class FbDialog extends DialogFragment {
     ShareDialog shareDialog;
     ShareContent shareContent;
     FacebookCallback facebookCallback;
+    private String message = "Connecting with Facebook...";
 
     FbListener listener;
     int tipo = 1;
@@ -39,12 +40,17 @@ public class FbDialog extends DialogFragment {
     public void setListener(FbListener listener) {
         this.listener = listener;
     }
+    
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         progress = new ProgressDialog(getActivity());
         progress.setCancelable(false);
         progress.setCanceledOnTouchOutside(false);
+        progress.setMessage(message);
         setCancelable(true);
 
         callbackManager = CallbackManager.Factory.create();

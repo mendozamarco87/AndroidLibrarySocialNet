@@ -3,6 +3,7 @@ package com.mm87.android.lib.socialnet.facebook;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Bundle;
 
 import com.facebook.AccessToken;
 import com.facebook.FacebookCallback;
@@ -44,14 +45,18 @@ public class FacebookNet {
 
     public static FBUser getUserProfile(AccessToken accessToken) {
         final FBUser fbUser = new FBUser();
-        GraphRequest.newMeRequest(accessToken, new GraphRequest.GraphJSONObjectCallback() {
+        GraphRequest graphRequest = GraphRequest.newMeRequest(accessToken, new GraphRequest.GraphJSONObjectCallback() {
             @Override
             public void onCompleted(JSONObject user, GraphResponse graphResponse) {
                 fbUser.setEmail(user.optString("email"));
                 fbUser.setName(user.optString("name"));
                 fbUser.setId(user.optString("id"));
             }
-        }).executeAndWait();
+        });
+        Bundle parameters = new Bundle();
+        parameters.putString("fields", "id,name,email");
+        graphRequest.setParameters(parameters);
+        graphRequest.executeAndWait();
         return fbUser;
     }
 
