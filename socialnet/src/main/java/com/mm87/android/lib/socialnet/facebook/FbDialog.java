@@ -40,7 +40,7 @@ public class FbDialog extends DialogFragment {
     public void setListener(FbListener listener) {
         this.listener = listener;
     }
-    
+
     public void setMessage(String message) {
         this.message = message;
     }

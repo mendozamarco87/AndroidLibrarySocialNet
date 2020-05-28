@@ -10,6 +10,7 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.share.Sharer;
 import com.facebook.share.model.ShareLinkContent;
@@ -41,6 +42,10 @@ public class FacebookNet {
     public static void login(FragmentManager fragmentManager, FacebookCallback<LoginResult> listener) {
         FbDialog login = new FbDialog();
         login.showLogin(fragmentManager, listener);
+    }
+
+    public static void logout() {
+        LoginManager.getInstance().logOut();
     }
 
     public static FBUser getUserProfile(AccessToken accessToken) {

@@ -1,21 +1,21 @@
 apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
 
-version '1.0.2' // your library version
+version '1.0.3' // your library version
 group 'com.mm87.android.lib' // whatever group name you'd like
 
 publishing {
     publications {
         AndroidRelease(MavenPublication) {
             groupId "${group}"
-            artifactId "base"
+            artifactId "socialnet"
             version "${version}"
             artifact "$buildDir/outputs/aar/socialnet-release.aar"
         }
         Production(MavenPublication) {
             artifact("$buildDir/outputs/aar/socialnet-release.aar") // replace with your library name
             groupId this.group
-            artifactId 'base' // replace with your library artifact id
+            artifactId 'socialnet' // replace with your library artifact id
             version this.version
 
             pom.withXml {
